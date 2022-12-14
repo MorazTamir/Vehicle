@@ -5,7 +5,6 @@ public class MiniBus extends Wehicle{
 		super(w, id, "MiniBus");
 	}
 
-	@Override
 	public void run() {
 		try {
 			w.wash(this);

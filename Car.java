@@ -5,14 +5,11 @@ public class Car extends Wehicle{
 		super(w, id, "Car");
 	}
 
-	@Override
 	public void run() {
 		try {
 			w.wash(this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

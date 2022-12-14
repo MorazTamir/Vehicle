@@ -12,6 +12,5 @@ public class SUV extends Wehicle{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
 }

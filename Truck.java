@@ -12,6 +12,5 @@ public class Truck extends Wehicle{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
 }
