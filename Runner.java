@@ -1,5 +1,4 @@
 //Author1: Ninel Benush 324699826 ,Author2: Moraz Tamir 208397455
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -28,15 +27,18 @@ public class Runner {
 			else
 				new Thread(new MiniBus(w, "minibus" + i)).start();
 			try {
-				int delay = (int) (avgArrive * 1000);
-				Thread.sleep(delay);
+				Thread.sleep(calcNextArrive(avgArrive));
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-
 		in.close();
+	}
 
+	public static int calcNextArrive(float avgArrive) {
+		Random rand = new Random();
+		double u = rand.nextDouble();
+		double nextTimeArrive = (-(Math.log(u) / avgArrive)) * 1000;
+		return (int) nextTimeArrive;
 	}
 }
