@@ -3,42 +3,22 @@
 import java.io.*;
 
 public class WechicleLogger {
-	BufferedReader br;
-	FileWriter fw;
-	PrintWriter pw;
-
-	public WechicleLogger(FileReader fr) {
-		this.br = new BufferedReader(fr);
-		pw = null;
-	}
-
-	public WechicleLogger(FileWriter fw) {
-		br = null;
-		this.pw = new PrintWriter(fw);
-	}
-
-	public WechicleLogger(FileReader fr, FileWriter fw) {
-		this.br = new BufferedReader(fr);
-		this.pw = new PrintWriter(fw);
-	}
-
-	public synchronized String readFromText() throws IOException {
-		return br.readLine();
-	}
-
-	public synchronized void writeToFile(String nameOfFile, String message) throws IOException {
-		fw = new FileWriter(nameOfFile, true);
-		pw = new PrintWriter(fw);
-		pw.println(message);
-		pw.close();
-		fw.close();
-	}
-
-	public void close() throws IOException {
-		if (br != null)
-			br.close();
-		if (pw != null)
-			pw.close();
-	}
+	static BufferedReader br;
+	static FileWriter fw;
+	static PrintWriter pw;
+	static Object lock = new Object(); 
+    public synchronized  static void init() throws IOException {
+    	fw = new FileWriter("log.txt"); //Create a file
+    }
+    
+    public static void writeToLog(String msg) throws IOException {
+        synchronized (lock) {
+        	fw.write(msg+'\n');
+        }
+    }
+    
+    public static void close() throws IOException {
+    	fw.close();
+    }
 
 }

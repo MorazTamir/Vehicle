@@ -1,5 +1,6 @@
 //Author1: Ninel Benush 324699826 ,Author2: Moraz Tamir 208397455
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -78,5 +79,4 @@ public class WehicleWasher {
 		System.out.println("Status: " + message);
 		System.out.println("Id: " + w.id + ", Type: " + w.type);
 	}
-
 }
